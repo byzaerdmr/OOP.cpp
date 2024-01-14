@@ -12,10 +12,22 @@ public:
         p = new int[sz];
         if (!p) exit(1);
 
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) 
             p[i] = 2 * i;
-        }
+        
     }
+      // Copy constructor
+    myclass(const myclass &other) {
+        size = other.size;
+        p = new int[size];
+        if (!p) exit(1);
+        for (int i = 0; i < size; i++)
+            p[i] = other.p[i];
+        x = other.x;
+        y = other.y;
+        z = other.z;
+    }
+
 
     ~myclass() { 
         delete [] p; 
@@ -40,5 +52,8 @@ void show(myclass a) {
 int main() {
     myclass ob1(10);
     show(ob1);
+    
+    myclass ob2 = ob1;
+    show(ob2);
     return 0;
 }
